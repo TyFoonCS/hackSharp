@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <html>
+        <head>
+            <meta charset="utf-8">
+            <title> Вход - Лучший школьник </title>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            <link href="main.css" rel="stylesheet">
+            <script src="materialize.min.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    var elems = document.querySelectorAll('select');
+                    var instances = M.FormSelect.init(elems);
+                });
+            </script>
+        </head>
+
+        <body>
+            <nav>
+                <div class="nav-wrapper blue darken-3">
+                    <a href="#" class="brand-logo left"><img class="logo" src="logo-white.png"></a>
+                    <ul id="nav-mobile" class="right">
+                        <li><a href="sass.html">Sass</a></li>
+                        <li><a href="badges.html">Components</a></li>
+                        <li><a href="collapsible.html">JavaScript</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="col s12 l6">
+                <form method="POST" class="card-panel" id="suggest-form">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Логин" id="name" type="text" name="person_login" class="validate" value="">
+                            <label for="person_login" class="active">Логин</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Пароль" id="name" type="password" name="person_pass" class="validate" value="">
+                            <label for="person_pass" class="active">Пароль</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden" name="_wp_http_referer" value="/suggest/">
+                            <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Войти</button>
+                        </div>
+                        <div class="col s12 right-align">
+                            <a class="link" href="enter.html">Зарегистрироваться</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <script type="text/javascript" src="materialize.min.js"></script>
+        </body>
+  </html>
