@@ -51,10 +51,10 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                                <select>
-                                    <option value="" disabled selected>Выберите школу</option>
-                                    <option value="1">МБОУ "ИТ-лицей №24"</option>
-                                    <option value="2">ГБОУ УР ЭМЛи № 29</option>
+                                <select name="school">
+                                    <option value="не указана" disabled selected>Выберите школу</option>
+                                    <option value="МБОУ ИТ-лицей №24">МБОУ ИТ-лицей №24</option>
+                                    <option value="ГБОУ УР ЭМЛи № 29">ГБОУ УР ЭМЛи № 29</option>
                                 </select>
                             <label>Школа</label>
                         </div>
@@ -62,11 +62,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="col s12 m2"><label>
-                                <input name="group1" type="radio"/>
+                                <input name="teacher" type="radio"/>
                                 <span>Учитель</span>
                             </label></div>
                             <div class="col s12 m2"><label>
-                                <input name="group1" type="radio"/>
+                                <input name="student" type="radio"/>
                                 <span>Ученик</span>
                             </label></div>
                         </div>
