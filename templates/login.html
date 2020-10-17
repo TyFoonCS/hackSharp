@@ -12,6 +12,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                     var elems = document.querySelectorAll('select');
                     var instances = M.FormSelect.init(elems);
+                    if ('{{ message }}' != '') M.toast({html: '{{ message }}'})
                 });
             </script>
         </head>
@@ -40,9 +41,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12">
-                            <blockquote>{{ message }}</blockquote>
-                        </div>
                         <div class="col s12 right-align">
                             <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden" name="_wp_http_referer" value="/suggest/">
                             <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Войти</button>

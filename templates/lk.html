@@ -26,42 +26,24 @@
         <form method="POST" class="card-panel" id="suggest-form">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="name" type="text" name="person_name" class="validate" value="">
+                    <input id="name" type="text" name="person_name" class="validate" value="Миша">
                     <label for="person_name" class="active">Ваше имя</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Логин" id="disabled" type="text" name="person_login" class="validate" value=" {{ nick_reg }} ">
+                    <input placeholder="Логин" id="disabled" type="text" name="person_login" class="validate" value="{{ nick_reg }}">
                     <label for="person_login" class="active">Логин</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Пароль" id="name" type="password" name="person_pass" class="validate" value="">
-                    <label for="person_pass" class="active">Пароль</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
                     <select name="school">
-                        <option value="не указана" disabled selected>Выберите школу</option>
+                        <option value="{{ school }}" disabled selected></option>
                         <option value="МБОУ ИТ-лицей №24">МБОУ ИТ-лицей №24</option>
                         <option value="ГБОУ УР ЭМЛи № 29">ГБОУ УР ЭМЛи № 29</option>
                     </select>
                     <label>Школа</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <div class="col s12 m2"><label>
-                        <input name="teacher" type="radio"/>
-                        <span>Учитель</span>
-                    </label></div>
-                    <div class="col s12 m2"><label>
-                        <input name="student" type="radio"/>
-                        <span>Ученик</span>
-                    </label></div>
                 </div>
             </div>
             <div class="row">
