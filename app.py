@@ -110,8 +110,8 @@ def lk():
                 cursor.execute('update users set fio="'+fio+'" where nick="'+flask.session["user"]+'"')
                 cursor.execute('update users set school="' + school + '" where nick="' + flask.session["user"] + '"')
                 conn.commit()
-                return flask.render_template("lk.html", fio=fio, nick=user[1], school=school)
-        return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3])
+                return flask.render_template("lk.html", fio=fio, nick=user[1], school=school, achive=user[5], rate=user[6], type_user=user[4])
+        return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3], achive=user[5], rate=user[6], type_user=user[4])
     return anonim_render_index()
 
 
