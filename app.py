@@ -40,8 +40,10 @@ def reg():
         type_student = flask.request.form.get("student")
         cursor.execute('select * from users where nick="' + nick + '"')
         ident = cursor.fetchall()
+        if len(fio) > 45 or len(nick) > 20 or len(password) > 20:
+            return flask.render_template("reg.html", message="Указанные данные слишком длинные!")
         if ident:
-            return flask.render_template("reg.html", nick_reg="Такой логин уже занят!")
+            return flask.render_template("reg.html", message="Такой логин уже занят!")
         if type_student == "on":
             type_user = 0
         else:
