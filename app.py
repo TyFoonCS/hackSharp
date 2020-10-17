@@ -38,18 +38,23 @@ def reg():
         password = flask.request.form.get("person_pass")
         school = flask.request.form.get("school")
         type_student = flask.request.form.get("student")
+        type_teacher = flask.request.form.get("teacher")
+        print(type_student, type_teacher)
         cursor.execute('select * from users where nick="' + nick + '"')
         ident = cursor.fetchall()
         if len(fio) > 45 or len(nick) > 20 or len(password) > 20:
             return flask.render_template("reg.html", message="Указанные данные слишком длинные!")
+        if "" in [fio, nick, password] or (not type_student and not type_teacher) or not school:
+            return flask.render_template("reg.html", message="Не все поля заполнены!")
         if ident:
             return flask.render_template("reg.html", message="Такой логин уже занят!")
         if type_student == "on":
             type_user = 0
         else:
             type_user = 1
+        print(fio, nick, password, school, type_user)
         sql = 'insert into users values("' + fio + '", "' + nick + '", "' + password + '", "' + school + '", ' + str(
-            type_user) + ', "' + school + '", 0)'
+            type_user) + ', "Не указаны", 0)'
         print(sql)
         cursor.execute(sql)
         conn.commit()
