@@ -12,6 +12,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                     var elems = document.querySelectorAll('select');
                     var instances = M.FormSelect.init(elems);
+                    if ('{{ message }}' != '') M.toast({html: '{{ message }}'})
                 });
             </script>
         </head>
@@ -35,13 +36,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="Логин" id="name" type="text" name="person_login" class="validate" value="">
+                            <input placeholder="Логин" id="login" type="text" name="person_login" class="validate" value="">
                             <label for="person_login" class="active">Логин</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="Пароль" id="name" type="password" name="person_pass" class="validate" value="">
+                            <input placeholder="Пароль" id="password" type="password" name="person_pass" class="validate" value="">
                             <label for="person_pass" class="active">Пароль</label>
                         </div>
                     </div>
@@ -76,7 +77,6 @@
                             <a class="link" href="login">У меня уже есть аккаунт</a>
                         </div>
                     </div>
-                    {{ message }}
                 </form>
             </div>
         </body>
