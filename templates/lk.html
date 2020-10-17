@@ -97,30 +97,54 @@
             }
             else {
                 document.write(`
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input placeholder="Имя ученика" id="achieve_name" type="text" name="person_achieve_name" class="validate"
-                               value="">
-                        <label for="person_achieve_name" class="active">Ученик</label>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input placeholder="Имя ученика" id="achieve_name" type="text" name="person_achieve_name" class="validate"
+                                   value="">
+                            <label for="person_achieve_name" class="active">Логин ученика</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input placeholder="Введите название достижения, которое хотите добавить" id="achieve" type="text" name="person_achieve" class="validate"
+                                   value="">
+                            <label for="person_achieve" class="active">Достижение</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input placeholder="Баллы за достижение" id="achieve_rate" type="text" name="person_achieve_rate" class="validate"
+                                   value="">
+                            <label for="person_achieve_rate" class="active">Баллы</label>
+                        </div>
                     </div>
-                    <div class="input-field col s4">
-                        <input placeholder="Введите название достижения, которое хотите добавить" id="achieve" type="text" name="person_achieve" class="validate"
-                               value="">
-                        <label for="person_achieve" class="active">Достижение</label>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <button class="btn-large orange darken-4" type="submit" name="achieve" value="achieve">Добавить достижение</button>
+                        </div>
                     </div>
-                    <div class="input-field col s4">
-                        <input placeholder="Баллы за достижение" id="achieve_rate" type="text" name="person_achieve_rate" class="validate"
-                               value="">
-                        <label for="person_achieve_rate" class="active">Баллы</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 right-align">
+                `);
 
-                        <button class="btn-large orange darken-4" type="submit" name="achieve" value="achieve">Добавить достижение</button>
+                const pupils = JSON.parse(`{{ all }}`.replace(/&#34;/g, `"`));
+                document.write(`
+                    <div class="row">
+                        <div class="col s6">
+                            <p>Имя ученика</p>
+                        </div>
+                        <div class="col s6">
+                            <p>Логин</p>
+                        </div>
                     </div>
-                </div>
-            `);
+                `);
+                pupils.forEach(function(item)
+                {
+                    document.write(`
+                        <div class="row">
+                            <div class="col s6">
+                                <textarea readonly class="materialize-textarea">${item[0]}</textarea>
+                            </div>
+                            <div class="col s6">
+                                <textarea readonly class="materialize-textarea">${item[1]}</textarea>
+                            </div>
+                        </div>
+                    `);
+                });
             }
         </script>
     </form>
