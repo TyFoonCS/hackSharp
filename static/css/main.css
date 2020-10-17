@@ -17,7 +17,11 @@
     border-bottom: 1px solid orange !important;
     box-shadow: 0 1px 0 0 orange !important;
 }
-.input-field input.valid[type=text], input.valid[type=password]{
+.input-field input[type=text].valid, input[type=password].valid{
+    border-bottom: 1px solid orange !important;
+    box-shadow: 0 1px 0 0 orange !important;
+}
+.input-field input.invalid[type=text]{
     border-bottom: 1px solid orange !important;
     box-shadow: 0 1px 0 0 orange !important;
 }
