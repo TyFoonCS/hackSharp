@@ -38,7 +38,7 @@ def reg():
         password = flask.request.form.get("person_pass")
         school = flask.request.form.get("school")
         type_student = flask.request.form.get("student")
-        cursor.execute('select * from users where nick="'+nick+'"')
+        cursor.execute('select * from users where nick="' + nick + '"')
         ident = cursor.fetchall()
         if ident:
             return flask.render_template("reg.html", nick_reg="Такой логин уже занят!")
@@ -46,7 +46,8 @@ def reg():
             type_user = 0
         else:
             type_user = 1
-        sql = 'insert into users values("' + fio + '", "' + nick + '", "' + password + '", "' + school + '", ' + str(type_user) + ', "' + school + '", 0)'
+        sql = 'insert into users values("' + fio + '", "' + nick + '", "' + password + '", "' + school + '", ' + str(
+            type_user) + ', "' + school + '", 0)'
         print(sql)
         cursor.execute(sql)
         conn.commit()
@@ -84,6 +85,13 @@ def index():
 def exit():
     if "user" in flask.session:
         flask.session.pop('user', None)
+    return anonim_render_index()
+
+
+@app.route('/lk')
+def lk():
+    if "user" in flask.session:
+        return flask.render_template("lk.html")
     return anonim_render_index()
 
 
