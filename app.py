@@ -7,6 +7,11 @@ app.secret_key = "P@ssw0rd"
 
 
 def session_render_index():
+    conn = sqlite3.connect("data.db")
+    cursor = conn.cursor()
+    cursor.execute('select fio, school, points from users order by points')
+    table = json.dumps(cursor.fetchall())
+    print(table)
     lk = 'Личный кабинет'
     lka = '/lk'
     reg = ''
@@ -14,10 +19,15 @@ def session_render_index():
     enter = 'Выйти'
     entera = "/exit"
     return flask.render_template("index.html", login=flask.session["user"], enter=enter, entera=entera,
-                                 rega=rega, reg=reg, lk=lk, lka=lka)
+                                 rega=rega, reg=reg, lk=lk, lka=lka, table=table)
 
 
 def anonim_render_index():
+    conn = sqlite3.connect("data.db")
+    cursor = conn.cursor()
+    cursor.execute('select fio, school, points from users order by points')
+    table = json.dumps(cursor.fetchall())
+    print(table)
     lk = ""
     lka = ""
     enter = 'Войти'
@@ -25,7 +35,7 @@ def anonim_render_index():
     reg = 'Регистрация'
     rega = "reg"
     return flask.render_template("index.html", login="anonim", enter=enter, entera=entera, rega=rega, reg=reg, lk=lk,
-                                 lka=lka)
+                                 lka=lka, table=table)
 
 
 @app.route('/reg', methods=["POST", "GET"])
