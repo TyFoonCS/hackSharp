@@ -8,7 +8,7 @@ app.secret_key = "P@ssw0rd"
 
 def session_render_index():
     lk = 'Личный кабинет'
-    lka = '/'
+    lka = '/lk'
     reg = ''
     rega = ''
     enter = 'Выйти'
