@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-            <meta charset="utf-8">
-            <title> Личный кабинет - Лучший школьник </title>
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-            <link href="static/css/main.css" rel="stylesheet">
-            <script src="static/js/materialize.min.js"></script>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', function() {
-                    var elems = document.querySelectorAll('select');
-                    var instances = M.FormSelect.init(elems);
-                });
-            </script>
-        </head>
+    <meta charset="utf-8">
+    <title> Личный кабинет - Лучший школьник </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="static/css/main.css" rel="stylesheet">
+    <script src="static/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+</head>
 <body>
-    <nav>
-        <div class="nav-wrapper blue darken-3">
-            <a href="/" class="brand-logo left"><img class="logo" src="static/images/logo-white.png"></a>
-        </div>
-    </nav>
-
-    <div class="col s12 l6">
-        <form method="POST" class="card-panel" id="suggest-form">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="ФИО" id="name" type="text" name="person_name" class="validate" value="Миша">
-                    <label for="person_name" class="active">Ваше имя</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input disabled placeholder="Логин" id="login" type="text" name="person_login" class="validate" value="{{ nick_reg }}">
-                    <label for="person_login" class="active">Логин</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <select name="school">
-                        <option value="{{ school }}" disabled selected></option>
-                        <option value="МБОУ ИТ-лицей №24">МБОУ ИТ-лицей №24</option>
-                        <option value="ГБОУ УР ЭМЛи № 29">ГБОУ УР ЭМЛи № 29</option>
-                    </select>
-                    <label>Школа</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12 right-align">
-                    <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden" name="_wp_http_referer" value="/suggest/">
-                    <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Подтвердить изменения</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <input disabled placeholder="Рейтинг" id="rate" type="text" name="person_rate" class="validate" value="{{ rate }}">
-                    <label for="person_rate" class="active">Рейтинг</label>
-                </div>
-            </div>
-        </form>
+<nav>
+    <div class="nav-wrapper blue darken-3">
+        <a href="/" class="brand-logo left"><img class="logo" src="static/images/logo-white.png"></a>
+        <ul id="nav-mobile" class="right">
+                        <li><a href="/exit">Выйти</a></li>
+        </ul>
     </div>
+</nav>
+
+<div class="col s12 l6">
+    <form method="POST" class="card-panel" id="suggest-form">
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="ФИО" id="name" type="text" name="person_name" class="validate" value="{{ fio }}">
+                <label for="person_name" class="active">Ваше имя</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input readonly placeholder="Логин" id="login" type="text" name="person_login" class="validate"
+                       value="{{ nick}}">
+                <label for="person_login" class="active">Логин</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="school">
+                    <option value="{{ school }}" selected>{{ school }}</option>
+                    <option value="МБОУ ИТ-лицей №24">МБОУ ИТ-лицей №24</option>
+                    <option value="ГБОУ УР ЭМЛи № 29">ГБОУ УР ЭМЛи № 29</option>
+                </select>
+                <label>Школа</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 right-align">
+                <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden"
+                                                                                       name="_wp_http_referer"
+                                                                                       value="/suggest/">
+                <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Подтвердить
+                    изменения
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled placeholder="Рейтинг" id="rate" type="text" name="person_rate" class="validate"
+                       value="{{ rate }}">
+                <label for="person_rate" class="active">Рейтинг</label>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

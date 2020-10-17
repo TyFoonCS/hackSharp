@@ -95,10 +95,23 @@ def exit():
     return anonim_render_index()
 
 
-@app.route('/lk')
+@app.route('/lk', methods=["POST", "GET"])
 def lk():
     if "user" in flask.session:
-        return flask.render_template("lk.html")
+        conn = sqlite3.connect("data.db")
+        cursor = conn.cursor()
+        cursor.execute('select * from users where nick="'+flask.session["user"]+'"')
+        user = cursor.fetchall()[0]
+        if flask.request.method == "POST":
+            fio = flask.request.form.get("person_name")
+            school = flask.request.form.get("school")
+            if fio and school:
+                print(12)
+                cursor.execute('update users set fio="'+fio+'" where nick="'+flask.session["user"]+'"')
+                cursor.execute('update users set school="' + school + '" where nick="' + flask.session["user"] + '"')
+                conn.commit()
+                return flask.render_template("lk.html", fio=fio, nick=user[1], school=school)
+        return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3])
     return anonim_render_index()
 
 
