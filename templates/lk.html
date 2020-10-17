@@ -65,17 +65,38 @@
     <form method="POST" class="card-panel" id="suggest-achieve-form">
         <input type='hidden' name='target' value='achieve'>
         <script type="text/javascript">
-            if ('{{ type_user }}' == 0) document.write(`
-                {{ achieve }}
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input readonly placeholder="Рейтинг" id="rate" type="text" name="person_rate" class="validate"
-                               value="{{ rate }}">
-                        <label for="person_rate" class="active">Рейтинг</label>
+            if ('{{ type_user }}' == 0) {
+                document.write(`
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input readonly placeholder="Рейтинг" id="rate" type="text" name="person_rate" class="validate"
+                                   value="{{ rate }}">
+                            <label for="person_rate" class="active">Рейтинг</label>
+                        </div>
                     </div>
-                </div>
-            `);
-            else document.write(`
+                `);
+
+                const achieves = '{{ achieve }}'.split(';;;;');
+                document.write(`
+                    <div class="row">
+                        <div class="col s12">
+                            <p>Достижения</p>
+                        </div>
+                    </div>
+                `);
+                achieves.forEach(function(item)
+                {
+                    document.write(`
+                        <div class="row">
+                            <div class="col s12">
+                                <textarea readonly class="materialize-textarea">${item}</textarea>
+                            </div>
+                        </div>
+                    `);
+                });
+            }
+            else {
+                document.write(`
                 <div class="row">
                     <div class="input-field col s4">
                         <input placeholder="Имя ученика" id="achieve_name" type="text" name="person_achieve_name" class="validate"
@@ -100,6 +121,7 @@
                     </div>
                 </div>
             `);
+            }
         </script>
     </form>
 </div>
