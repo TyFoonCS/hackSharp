@@ -124,11 +124,14 @@
                 const pupils = JSON.parse(`{{ all }}`.replace(/&#34;/g, `"`));
                 document.write(`
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s4">
                             <p>Имя ученика</p>
                         </div>
-                        <div class="col s6">
+                        <div class="col s4">
                             <p>Логин</p>
+                        </div>
+                        <div class="col s4">
+                            <p>Рейтинг</p>
                         </div>
                     </div>
                 `);
@@ -136,11 +139,14 @@
                 {
                     document.write(`
                         <div class="row">
-                            <div class="col s6">
+                            <div class="col s4">
                                 <textarea readonly class="materialize-textarea">${item[0]}</textarea>
                             </div>
-                            <div class="col s6">
+                            <div class="col s4">
                                 <textarea readonly class="materialize-textarea">${item[1]}</textarea>
+                            </div>
+                            <div class="col s4">
+                                <textarea readonly class="materialize-textarea">${item[2]}</textarea>
                             </div>
                         </div>
                     `);

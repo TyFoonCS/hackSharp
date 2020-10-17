@@ -26,6 +26,36 @@
                     </ul>
                 </div>
             </nav>
-            Hi {{ login }}
+            <p>Привет, {{ login }}</p>
+            <div class="row">
+                <div class="col s4">
+                    <p>Имя</p>
+                </div>
+                <div class="col s4">
+                    <p>Школа</p>
+                </div>
+                <div class="col s4">
+                    <p>Рейтинг</p>
+                </div>
+            </div>
+            <script type="text/javascript">
+                const pupils = JSON.parse(`{{ table }}`.replace(/&#34;/g, `"`));
+                pupils.forEach(function(item)
+                {
+                    document.write(`
+                        <div class="row">
+                            <div class="col s4">
+                                <textarea readonly class="materialize-textarea">${item[0]}</textarea>
+                            </div>
+                            <div class="col s4">
+                                <textarea readonly class="materialize-textarea">${item[1]}</textarea>
+                            </div>
+                            <div class="col s4">
+                                <textarea readonly class="materialize-textarea">${item[2]}</textarea>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
         </body>
   </html>

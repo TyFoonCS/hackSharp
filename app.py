@@ -10,7 +10,7 @@ def session_render_index():
     conn = sqlite3.connect("data.db")
     cursor = conn.cursor()
     cursor.execute('select fio, school, points from users order by points')
-    table = json.dumps(cursor.fetchall())
+    table = json.dumps(cursor.fetchall()[::-1])
     print(table)
     lk = 'Личный кабинет'
     lka = '/lk'
@@ -26,7 +26,7 @@ def anonim_render_index():
     conn = sqlite3.connect("data.db")
     cursor = conn.cursor()
     cursor.execute('select fio, school, points from users order by points')
-    table = json.dumps(cursor.fetchall())
+    table = json.dumps(cursor.fetchall()[::-1])
     print(table)
     lk = ""
     lka = ""
@@ -112,7 +112,7 @@ def lk():
         cursor = conn.cursor()
         cursor.execute('select * from users where nick="'+flask.session["user"]+'"')
         user = cursor.fetchall()[0]
-        cursor.execute('select fio, nick from users where school="'+user[3]+'"')
+        cursor.execute('select fio, nick, points from users where school="'+user[3]+'"')
         all = json.dumps(cursor.fetchall())
         if flask.request.method == "POST" and flask.request.form.get("target") == "change":
             print(122)
