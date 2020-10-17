@@ -26,7 +26,7 @@
 </nav>
 
 <div class="col s12 l6">
-    <form method="POST" class="card-panel" id="suggest-form">
+    <form method="GET" class="card-panel" id="suggest-form">
         <div class="row">
             <div class="input-field col s12">
                 <input placeholder="ФИО" id="name" type="text" name="person_name" class="validate" value="{{ fio }}">
@@ -60,7 +60,8 @@
                 </button>
             </div>
         </div>
-
+    </form>
+    <form method="POST" class="card-panel" id="suggest-achieve-form">
         <script type="text/javascript">
             if ('{{ type_user }}' == 0) document.write(`
                 {{ achieve }}
