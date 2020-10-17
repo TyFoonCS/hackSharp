@@ -102,15 +102,35 @@ def lk():
         cursor = conn.cursor()
         cursor.execute('select * from users where nick="'+flask.session["user"]+'"')
         user = cursor.fetchall()[0]
-        if flask.request.method == "POST":
+        if flask.request.method == "POST" and flask.request.form.get("target") == "change":
+            print(122)
             fio = flask.request.form.get("person_name")
             school = flask.request.form.get("school")
             if fio and school:
-                print(12)
+                print(144)
                 cursor.execute('update users set fio="'+fio+'" where nick="'+flask.session["user"]+'"')
                 cursor.execute('update users set school="' + school + '" where nick="' + flask.session["user"] + '"')
                 conn.commit()
                 return flask.render_template("lk.html", fio=fio, nick=user[1], school=school, achieve=user[5], rate=user[6], type_user=user[4])
+        if flask.request.method == "POST" and flask.request.form.get("target") == "achieve":
+            print(12)
+            nick = flask.request.form.get("person_achieve_name")
+            achieve = flask.request.form.get("person_achieve")
+            print(achieve)
+            rate = flask.request.form.get("person_achieve_rate")
+            cursor.execute('select * from users where nick="'+nick+'"')
+            student = cursor.fetchall()[0]
+            if student[3] == user[3]:
+                if student[5] == "Не указаны":
+                    new_achieve = achieve + "\n"
+                else:
+                    new_achieve = student[5] + achieve + "\n"
+                points = str(student[6] + int(rate))
+                print(new_achieve, points)
+                cursor.execute('update users set achive="'+new_achieve+'" where nick="'+nick+'"')
+                cursor.execute('update users set points="' + points + '" where nick="' + nick + '"')
+                conn.commit()
+
         return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3], achieve=user[5], rate=user[6], type_user=user[4])
     return anonim_render_index()
 

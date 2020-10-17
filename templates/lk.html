@@ -26,7 +26,8 @@
 </nav>
 
 <div class="col s12 l6">
-    <form method="GET" class="card-panel" id="suggest-form">
+    <form method="POST" class="card-panel" id="suggest-form">
+        <input type='hidden' name='target' value='change'>
         <div class="row">
             <div class="input-field col s12">
                 <input placeholder="ФИО" id="name" type="text" name="person_name" class="validate" value="{{ fio }}">
@@ -55,13 +56,14 @@
                 <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden"
                                                                                        name="_wp_http_referer"
                                                                                        value="/suggest/">
-                <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Подтвердить
+                <button class="btn-large orange darken-4" type="submit" name="change" value="change">Подтвердить
                     изменения
                 </button>
             </div>
         </div>
     </form>
     <form method="POST" class="card-panel" id="suggest-achieve-form">
+        <input type='hidden' name='target' value='achieve'>
         <script type="text/javascript">
             if ('{{ type_user }}' == 0) document.write(`
                 {{ achieve }}
@@ -93,8 +95,8 @@
                 </div>
                 <div class="row">
                     <div class="col s12 right-align">
-                        <input type="hidden" id="nonce" name="nonce" value="ee18107dff"><input type="hidden" name="_wp_http_referer" value="/suggest/">
-                        <button class="btn-large orange darken-4" type="submit" name="action" value="suggests">Добавить достижение</button>
+
+                        <button class="btn-large orange darken-4" type="submit" name="achieve" value="achieve">Добавить достижение</button>
                     </div>
                 </div>
             `);
