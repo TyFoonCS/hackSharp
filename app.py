@@ -102,6 +102,8 @@ def lk():
         cursor = conn.cursor()
         cursor.execute('select * from users where nick="'+flask.session["user"]+'"')
         user = cursor.fetchall()[0]
+        cursor.execute('select fio, nick from users where school="'+user[3]+'"')
+        all = json.dumps(cursor.fetchall())
         if flask.request.method == "POST" and flask.request.form.get("target") == "change":
             print(122)
             fio = flask.request.form.get("person_name")
@@ -111,7 +113,7 @@ def lk():
                 cursor.execute('update users set fio="'+fio+'" where nick="'+flask.session["user"]+'"')
                 cursor.execute('update users set school="' + school + '" where nick="' + flask.session["user"] + '"')
                 conn.commit()
-                return flask.render_template("lk.html", fio=fio, nick=user[1], school=school, achieve=user[5], rate=user[6], type_user=user[4])
+                return flask.render_template("lk.html", fio=fio, nick=user[1], school=school, achieve=user[5], rate=user[6], type_user=user[4], all=all)
         if flask.request.method == "POST" and flask.request.form.get("target") == "achieve":
             print(12)
             nick = flask.request.form.get("person_achieve_name")
@@ -122,16 +124,16 @@ def lk():
             student = cursor.fetchall()[0]
             if student[3] == user[3]:
                 if student[5] == "Не указаны":
-                    new_achieve = achieve + "\n"
+                    new_achieve = achieve + ";;;;"
                 else:
-                    new_achieve = student[5] + achieve + "\n"
+                    new_achieve = student[5] + achieve + ";;;;"
                 points = str(student[6] + int(rate))
                 print(new_achieve, points)
                 cursor.execute('update users set achive="'+new_achieve+'" where nick="'+nick+'"')
                 cursor.execute('update users set points="' + points + '" where nick="' + nick + '"')
                 conn.commit()
 
-        return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3], achieve=user[5], rate=user[6], type_user=user[4])
+        return flask.render_template("lk.html", fio=user[0], nick=user[1], school=user[3], achieve=user[5], rate=user[6], type_user=user[4], all=all)
     return anonim_render_index()
 
 
